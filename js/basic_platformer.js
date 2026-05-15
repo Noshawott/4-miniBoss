@@ -24,7 +24,7 @@ var player;
 	var fX = .85;
 	var fY = .97;
 	
-	var gravity = 1;
+	//var gravity = 1;
 
 	interval = 1000/60;
 	timer = setInterval(animate, interval);
@@ -40,6 +40,14 @@ function animate()
 		player.vy += player.jumpHeight;
 	}
 
+	if(w)
+	{
+		player.vy -= player.ax * player.force;
+	}
+	if(s)
+	{
+		player.vy += player.ax * player.force;
+	}
 	if(a)
 	{
 		player.vx += -player.ax * player.force;
@@ -52,7 +60,7 @@ function animate()
 	player.vx *= fX;
 	player.vy *= fY;
 	
-	player.vy += gravity;
+	// player.vy += gravity;
 	
 	player.x += Math.round(player.vx);
 	player.y += Math.round(player.vy);
